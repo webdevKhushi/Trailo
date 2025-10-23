@@ -1,16 +1,31 @@
-const API_KEY = "e5d18b43e9667b553f850d2adfa76625";
-const BASE_URL = "https://api.themoviedb.org/3";
+// const API_KEY = "e5d18b43e9667b553f850d2adfa76625";
+// const BASE_URL = "https://api.themoviedb.org/3";
+
+// export const getPopularMovies = async () => {
+//   const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
+//   const data = await response.json();
+//   return data.results;
+// };
+
+// export const searchMovies = async (query) => {
+//   const response = await fetch(
+//     `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`
+//   );
+//   const data = await response.json();
+//   return data.results;
+// };
+// src/services/api.js
+
+const BASE_URL = "/api/movies"; // Call the serverless function
 
 export const getPopularMovies = async () => {
-  const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
+  const response = await fetch(BASE_URL);       // Fetch popular movies
   const data = await response.json();
-  return data.results;
+  return data;
 };
 
 export const searchMovies = async (query) => {
-  const response = await fetch(
-    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`
-  );
+  const response = await fetch(`${BASE_URL}?query=${encodeURIComponent(query)}`); // Search movies
   const data = await response.json();
-  return data.results;
+  return data;
 };
